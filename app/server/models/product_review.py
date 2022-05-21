@@ -4,16 +4,17 @@ from beanie import Document
 from pydantic import BaseModel
 from typing import Optional
 
+
 class ProductReview(Document):
     name: str
     product: str
     rating: float
     review: str
     date: datetime = datetime.now()
-    
+
     class Settings:
         name = "prodcut_review"
-    
+
     class Config:
         schema_extra = {
             "example": {
@@ -24,6 +25,7 @@ class ProductReview(Document):
                 "date": datetime.now()
             }
         }
+
 
 class UpdateProductReview(BaseModel):
     name: Optional[str]
@@ -38,7 +40,7 @@ class UpdateProductReview(BaseModel):
                 "name": "Abdulazeez Abdulazeez",
                 "product": "TestDriven TDD Course",
                 "rating": 5.0,
-                "review": "Excellent course",
+                "review": "Excellent course!",
                 "date": datetime.now()
             }
         }

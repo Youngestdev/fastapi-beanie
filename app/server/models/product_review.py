@@ -16,7 +16,7 @@ class ProductReview(Document):
         name = "prodcut_review"
 
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "name": "Abdulazeez",
                 "product": "TestDriven TDD Course",
@@ -35,7 +35,7 @@ class UpdateProductReview(BaseModel):
     date: Optional[datetime]
 
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "name": "Abdulazeez Abdulazeez",
                 "product": "TestDriven TDD Course",

@@ -1,12 +1,12 @@
 from beanie import init_beanie
 import motor.motor_asyncio
 
-from app.server.models.product_review import ProductReview
+from server.models.product_review import ProductReview
 
 
 async def init_db():
     client = motor.motor_asyncio.AsyncIOMotorClient(
-        "mongodb://localhost:27017/productreviews"
+        "mongodb://dev:dev@localhost:27018/productreviews?authSource=admin&readPreference=primary&appname=Pyservice&directConnection=true&ssl=false"
     )
 
     await init_beanie(database=client.db_name, document_models=[ProductReview])

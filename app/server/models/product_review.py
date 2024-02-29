@@ -1,11 +1,13 @@
 from datetime import datetime
+from uuid import UUID, uuid4
 
 from beanie import Document
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from typing import Optional
 
 
 class ProductReview(Document):
+    id: UUID = Field(alias="_id", default_factory=uuid4)
     name: str
     product: str
     rating: float
@@ -13,10 +15,10 @@ class ProductReview(Document):
     date: datetime = datetime.now()
 
     class Settings:
-        name = "prodcut_review"
+        name = "products"
 
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "name": "Abdulazeez",
                 "product": "TestDriven TDD Course",
@@ -35,7 +37,7 @@ class UpdateProductReview(BaseModel):
     date: Optional[datetime]
 
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "name": "Abdulazeez Abdulazeez",
                 "product": "TestDriven TDD Course",
